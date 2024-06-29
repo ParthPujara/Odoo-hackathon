@@ -1,8 +1,8 @@
 import React from 'react'
-import img from '../images/our-services.png'
-import img2 from '../images/our-services2.png'
-import img3 from '../images/our-services3.png'
-import img4 from '../images/our-services4.png'
+// import img from '../images/our-services.png'
+// import img2 from '../images/our-services2.png'
+// import img3 from '../images/our-services3.png'
+// import img4 from '../images/our-services4.png'
 const OurServices = () => {
     return (
         <div>
@@ -13,7 +13,7 @@ const OurServices = () => {
                 <div className="row d-flex justify-content-center flex-md-nowrap mt-5" style={{ borderRadius: '5px', }}>
                     <div className="col-md-3 card mx-2" style={{ border: '0', padding: '15px 5px'}}>
                         <div className="our-services-icon mx-auto pt-3" style={{marginBottom: '-10px'}}>
-                            <img src={img} className="card-img-top" alt="..." height={150}/>
+                            <img src="#" className="card-img-top" alt="..." height={150}/>
                         </div>
                         <div className="card-body text-center">
                             <h5 className="card-title text-center" style={{margin: '10px 0'}}>Sell Used Laptop</h5>
@@ -22,7 +22,7 @@ const OurServices = () => {
                     </div>
                     <div className="col-md-3 card" style={{ border: '0', padding: '15px 5px'}}>
                         <div className="our-services-icon mx-auto pt-3" style={{marginBottom: '-10px'}}>
-                            <img src={img2} className="card-img-top" alt="..." height={150}/>
+                            <img src="#" className="card-img-top" alt="..." height={150}/>
                         </div>
                         <div className="card-body text-center">
                             <h5 className="card-title text-center" style={{margin: '10px 0'}}>Repair My Laptop</h5>
@@ -31,7 +31,7 @@ const OurServices = () => {
                     </div>
                     <div className="col-md-3 card mx-2" style={{ border: '0', padding: '15px 5px'}}>
                         <div className="our-services-icon mx-auto pt-3" style={{marginBottom: '-10px'}}>
-                            <img src={img3} className="card-img-top" alt="..." height={150}/>
+                            <img src="#" className="card-img-top" alt="..." height={150}/>
                         </div>
                         <div className="card-body text-center">
                             <h5 className="card-title text-center" style={{margin: '10px 0'}}>Rent A Laptop</h5>
@@ -40,7 +40,7 @@ const OurServices = () => {
                     </div>
                     <div className="col-md-3 card" style={{ border: '0', padding: '15px 5px'}}>
                         <div className="our-services-icon mx-auto pt-3" style={{marginBottom: '-10px'}}>
-                            <img src={img4} className="card-img-top" alt="..." height={150}/>
+                            <img src="#" className="card-img-top" alt="..." height={150}/>
                         </div>
                         <div className="card-body text-center">
                             <h5 className="card-title text-center" style={{margin: '10px 0'}}>Buy Refurbished Laptop</h5>
