@@ -4,6 +4,13 @@ import $ from "jquery"
 import { useForm } from 'react-hook-form';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import './../index.css';
+
 const ViewItem = () => {
     const { id } = useParams()
     const [data, setData] = useState([])
@@ -166,11 +173,12 @@ const ViewItem = () => {
                     {data && data.map((category) => (
                         <tr className='border border-b-1'>
                             <td
-                                className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900"
-                            >
+                                className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900" style={{width: "50px", height: "50px"}}
+                            ><Swiper autoplay loop navigation={true} modules={[Navigation]} className="mySwiper">
                                 {category.images.map((e) => (
-                                    <img className='h-20' src={`${import.meta.env.VITE_API_DOMAIN}` + e.image} alt="" />
+                                    <SwiperSlide><img  src={`${import.meta.env.VITE_API_DOMAIN}` + e.image} alt="" /></SwiperSlide>
                                 ))}
+                                </Swiper>
                             </td>
                             <td
                                 className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 cursor-pointer"
