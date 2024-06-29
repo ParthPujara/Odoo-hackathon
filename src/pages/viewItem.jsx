@@ -1,3 +1,5 @@
+// It Adds, Displays Items by Category such as name, image, actions etc.
+
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import $ from "jquery"
@@ -82,7 +84,7 @@ const ViewItem = () => {
             redirect: "follow"
         };
 
-        fetch(`http://192.168.29.62:8000/api/furniture/`, requestOptions)
+        fetch(`http://192.168.29.62:8000/api/furniture/get/${id}`, requestOptions)
             .then((response) => response.json())
             .then((result) => { console.log(result); if (result.status === true) { setData(result.data) } })
             .catch((error) => console.error(error));
@@ -203,7 +205,6 @@ const ViewItem = () => {
                             </td>
                         </tr>
                     ))}
-
                 </tbody>
             </table>
 
@@ -211,7 +212,7 @@ const ViewItem = () => {
                 <form class="modal-dialog modal-dialog-centered" onSubmit={handleSubmit(addItem)} content='multipart/form-data'>
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" style={{ fontSize: "22px" }} id="addItemModalLabel">Add Category</h5>
+                            <h5 class="modal-title" style={{ fontSize: "22px" }} id="addItemModalLabel">Add Items</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id='modalCloseBtn'></button>
                         </div>
                         <div class="modal-body">

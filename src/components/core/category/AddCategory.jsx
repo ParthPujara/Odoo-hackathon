@@ -1,10 +1,12 @@
+// It Adds, Displays Category such as name, image, actions etc.
+
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const AddCategory = ({ categoryData }) => {
+const AddCategory = () => {
     const navigate = useNavigate()
     const [catName, setCatName] = useState("")
     const [img, setImg] = useState()

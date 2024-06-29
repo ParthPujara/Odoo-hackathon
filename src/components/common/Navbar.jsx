@@ -50,7 +50,7 @@ const NavBar = ({ setShowToggle, openNav, setOpenNav }) => {
           className="h-8 w-8 object-cover rounded-full"
         />
         <span className="ml-[10px] text-white font-bold text-[1.2rem]">
-          Furniture
+          EasyFurnished
         </span>
         <span className={`absolute top-3 right-7 ml-[10px] text-white font-bold text-[1.2rem] cursor-pointer ${width <= 900 ? '' : 'hidden'}`} onClick={() => { setShowToggle(true); setOpenNav(false); }}>
           <UilX />
@@ -62,14 +62,14 @@ const NavBar = ({ setShowToggle, openNav, setOpenNav }) => {
         className={checkActive}
         onClick={() => { if (width <= 900) { setOpenNav(false); setShowToggle(true) } }}
       >
-       Add Category
+       Manage Categories
       </NavLink>
       <NavLink
-        to="manage-subscription"
+        to="orders"
         className={checkActive}
         onClick={() => { if (width <= 900) { setOpenNav(false); setShowToggle(true) } }}
       >
-        Manage Subscription
+        Manage Orders
       </NavLink>
 
       <NavLink

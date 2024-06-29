@@ -1,3 +1,5 @@
+// It Authenticate user with credentials
+
 import React, { createContext, useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
@@ -38,21 +40,23 @@ const LoginForm = () => {
             .then((response) => response.json())
             .then((result) => {
                 if (result.status === true) {
-                    toast.success('Successfull Login', {
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "light",
-                        transition: Bounce,
-                    });
+                    console.log("sdcsd")
+                        toast.success('Successfull Login', {
+                            position: "top-right",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                            transition: Bounce,
+                        });
                     localStorage.setItem('token', result.token);;
                     navigate('/add-category')
                 }
                 else {
+                   
                     toast.error('Invalid credentials', {
                         position: "top-right",
                         autoClose: 5000,
@@ -63,7 +67,8 @@ const LoginForm = () => {
                         progress: undefined,
                         theme: "light",
                         transition: Bounce,
-                    })
+                    });
+                    setIsLoading(false);
                 }
             })
             .catch((error) => {
@@ -82,6 +87,8 @@ const LoginForm = () => {
 
     }
     return (
+        <>
+        <ToastContainer/>
         <div className="min-h-screen flex items-center justify-center bg-blue-100">
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
                 <h1 className="text-2xl font-bold text-left mb-4">Welcome!</h1>
@@ -146,6 +153,7 @@ const LoginForm = () => {
                 </form>
             </div>
         </div>
+        </>
     )
 }
 
