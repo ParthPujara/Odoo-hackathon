@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import logo from "../../assets/react.svg";
+import logo from "../../assets/dashboard-icon.png";
 import { UilX } from "@iconscout/react-unicons"
 import { useEffect, useState } from "react";
 const inActiveClass =
@@ -47,10 +47,10 @@ const NavBar = ({ setShowToggle, openNav, setOpenNav }) => {
         <img  
           src={logo}
           alt="logo"
-          className="h-8 w-8 object-cover rounded-full"
+          className="h-8 w-8 object-cover"
         />
         <span className="ml-[10px] text-white font-bold text-[1.2rem]">
-          EasyFurnished
+          EasyFurnish
         </span>
         <span className={`absolute top-3 right-7 ml-[10px] text-white font-bold text-[1.2rem] cursor-pointer ${width <= 900 ? '' : 'hidden'}`} onClick={() => { setShowToggle(true); setOpenNav(false); }}>
           <UilX />
