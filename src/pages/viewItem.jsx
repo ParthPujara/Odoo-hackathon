@@ -28,7 +28,7 @@ const ViewItem = () => {
         const myHeaders = new Headers();
         myHeaders.append("Accept", "application/json");
         // myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`)
-        myHeaders.append("Authorization", `Bearer ${import.meta.env.VITE_TOKEN}`)
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`)
         var formdata = new FormData();
         formdata.append("name", data.name);
         for (var x = 0; x < image.files.length; x++) {
@@ -50,10 +50,10 @@ const ViewItem = () => {
         };
 
         fetch("http://192.168.29.62:8000/api/furniture", requestOptions)
-            .then((response) => response.text())
+            .then((response) => response.json())
             .then((result) => {
                 if (result.status === true) {
-                    toast.success('Category Added successully', {
+                    toast.success('Item Added successully', {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -74,7 +74,7 @@ const ViewItem = () => {
     const viewItems = () => {
         const myHeaders = new Headers();
         myHeaders.append("Accept", "application/json");
-        myHeaders.append("Authorization", `Bearer ${import.meta.env.VITE_TOKEN}`);
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
 
         const requestOptions = {
             method: "GET",
@@ -82,7 +82,7 @@ const ViewItem = () => {
             redirect: "follow"
         };
 
-        fetch("http://192.168.29.62:8000/api/furniture", requestOptions)
+        fetch(`http://192.168.29.62:8000/api/furniture/`, requestOptions)
             .then((response) => response.json())
             .then((result) => { console.log(result); if (result.status === true) { setData(result.data) } })
             .catch((error) => console.error(error));
@@ -90,7 +90,7 @@ const ViewItem = () => {
     const viewCity = () => {
         const myHeaders = new Headers();
         myHeaders.append("Accept", "application/json");
-        myHeaders.append("Authorization", `Bearer ${import.meta.env.VITE_TOKEN}`);
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
 
         const requestOptions = {
             method: "GET",
@@ -107,7 +107,7 @@ const ViewItem = () => {
     const deleteItem = (id) => {
         const myHeaders = new Headers();
         myHeaders.append("Accept", "application/json");
-        myHeaders.append("Authorization", `Bearer ${import.meta.env.VITE_TOKEN}`);
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
 
         const requestOptions = {
             method: "DELETE",
@@ -119,7 +119,7 @@ const ViewItem = () => {
             .then((response) => response.json())
             .then((result) => {
                 if (result.status === true) {
-                    toast.success('Category Deleted successully', {
+                    toast.success('Item Deleted successully', {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,

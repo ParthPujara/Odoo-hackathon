@@ -22,7 +22,7 @@ const AddCategory = ({ categoryData }) => {
         else {
             const myHeaders = new Headers();
             myHeaders.append("Accept", "application/json");
-            myHeaders.append("Authorization", `Bearer ${import.meta.env.VITE_TOKEN}`);
+            myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
 
             const formdata = new FormData();
             formdata.append("name", data.name);
@@ -34,7 +34,7 @@ const AddCategory = ({ categoryData }) => {
                 redirect: "follow"
             };
 
-            fetch(`${import.meta.env.VITE_API_DOMAIN}`, requestOptions)
+            fetch(`${import.meta.env.VITE_API_DOMAIN}api/category`, requestOptions)
                 .then((response) => response.json())
                 .then((result) => {
                     console.log(result.status)
@@ -50,6 +50,8 @@ const AddCategory = ({ categoryData }) => {
                             theme: "light",
                             transition: Bounce,
                         });
+                        document.getElementById("modalCloseBtn").click(); 
+                        getCategory();
                     }
                 })
                 .catch((error) => {
@@ -72,7 +74,7 @@ const AddCategory = ({ categoryData }) => {
     const getCategory = () => {
         const myHeaders = new Headers();
         myHeaders.append("Accept", "application/json");
-        myHeaders.append("Authorization", `Bearer ${import.meta.env.VITE_TOKEN}`);
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
 
         const requestOptions = {
             method: "GET",
@@ -88,7 +90,7 @@ const AddCategory = ({ categoryData }) => {
     const deleteCategory = (id) => {
         const myHeaders = new Headers();
         myHeaders.append("Accept", "application/json");
-        myHeaders.append("Authorization", `Bearer ${import.meta.env.VITE_TOKEN}`);
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
 
         const requestOptions = {
             method: "DELETE",
@@ -118,7 +120,7 @@ const AddCategory = ({ categoryData }) => {
     const updateCategory = (id) => {
         const myHeaders = new Headers();
         myHeaders.append("Accept", "application/json");
-        myHeaders.append("Authorization", `Bearer ${import.meta.env.VITE_TOKEN}`);
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
 
 
         const formdata = new FormData();
@@ -198,8 +200,8 @@ const AddCategory = ({ categoryData }) => {
                                     Delete
                                 </button>
                             </td>
-                            <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 bg-warning flex items-self justify-center cursor-pointer" onClick={() => navigate(`/view-item/${category.id}`)}>
-                                View Item
+                            <td className='h-full mx-auto'>
+                                <button className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 bg-warning flex items-self justify-center cursor-pointer" onClick={() => navigate(`/view-item/${category.id}`)}>View Item</button>
                             </td>
                         </tr>
                     ))}
@@ -213,7 +215,7 @@ const AddCategory = ({ categoryData }) => {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" style={{fontSize: "22px"}} id="addCatgoryModalLabel">Add Category</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" id='modalCloseBtn'></button>
                         </div>
                         <div className="modal-body">
                             Upload Image <br />

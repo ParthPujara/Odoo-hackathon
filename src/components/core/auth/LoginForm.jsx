@@ -47,25 +47,38 @@ const LoginForm = () => {
                         draggable: true,
                         progress: undefined,
                         theme: "light",
-                        transition: Bounce, 
+                        transition: Bounce,
                     });
-                    localStorage.setItem('token', result.token);
-                    // user.setUserRole("Admin");
-                    // console.log(user.userRole);
-                    navigate('/dashboard')
+                    localStorage.setItem('token', result.token);;
+                    navigate('/add-category')
+                }
+                else {
+                    toast.error('Invalid credentials', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    })
                 }
             })
-            .catch((error) => {toast.error('Invalid credentials', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                transition: Bounce,
-            });    setIsLoading(false); console.error(error)});
+            .catch((error) => {
+                toast.error('Invalid credentials', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                }); setIsLoading(false); console.error(error)
+            });
 
     }
     return (
@@ -112,13 +125,13 @@ const LoginForm = () => {
                             }
                         </div>
                     </div>
-                    
+
                     <div>
                         <button
                             type="submit"
                             disabled={isLoading}
                             className={`relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md ${isLoading ? 'bg-gray-400 text-gray-800' : 'text-white bg-blue-950 hover:bg-blue-800'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-                            >
+                        >
                             Sign in
                         </button>
                     </div>

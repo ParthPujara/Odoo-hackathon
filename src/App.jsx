@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { Navigate, Route, Routes } from "react-router-dom";
 import LoginForm from './components/core/auth/LoginForm';
@@ -17,36 +17,36 @@ import ViewItem from './pages/viewItem';
 
 function App() {
 
-  const [checkUser, setCheckUser] = useState("");
+  const [token, setToken] = useState(localStorage.getItem('token'));
+useEffect(() => {
+  setToken(localStorage.getItem('token'))
+}, [token])
 
   return (
     <div>
 
-      {checkUser === "User" ?
-        <>
-          <Nav />
-          <Routes>
 
-            <Route path="/" element={<Homepage />} />
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/sign-up" element={<SignUp />} />
-          </Routes >
-        </>
-        :
-        <Routes>
-          {/* <Route path="/" element={<Navigate to=/>} /> */}
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
+      <Routes>
+
+        { token?
           <Route element={<MainLayout />}>
-            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/manage-subscription" element={<ManageSubscription />} />
             <Route path="/add-category" element={<Category />} />
             <Route path="/view-item/:id" element={<ViewItem />} />
           </Route>
+          : <>
+            <Route
+              path='/'
+              element={<Navigate to="/login" />}
+            />
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+          </>
+        }
 
-        </Routes>
-      }
+      </Routes>
+
     </div>
   )
 }

@@ -56,13 +56,7 @@ const NavBar = ({ setShowToggle, openNav, setOpenNav }) => {
           <UilX />
         </span>
       </div>
-      <NavLink
-        to="dashboard"
-        className={checkActive}
-        onClick={() => { if (width <= 900) { setOpenNav(false); setShowToggle(true) } }}
-      >
-        Dashboard
-      </NavLink>
+     
       <NavLink
         to="add-category"
         className={checkActive}
@@ -81,7 +75,6 @@ const NavBar = ({ setShowToggle, openNav, setOpenNav }) => {
       <NavLink
         to="/"
         className={`${inActiveClass} + bg-red-500`}
-        // onClick={() => Cookies.remove('auth-token')}
         onClick={() => localStorage.removeItem('auth-token')}
       >
         Logout
