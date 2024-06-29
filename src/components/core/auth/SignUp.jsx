@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { UilEye, UilEyeSlash } from "@iconscout/react-unicons";
 import { Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
 
@@ -34,12 +35,12 @@ const SignUp = () => {
         };
 
         fetch("http://192.168.29.62:8000/api/signup", requestOptions)
-            .then((response) => response.text())
+            .then((response) => response.json())
             .then((result) => {
                 if (result.status === true) {
                     localStorage.setItem('token', result.token);
                     toast.success('Signed In successfully', {
-                        position: "top-right",
+                        position: "top-right",   
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -53,17 +54,19 @@ const SignUp = () => {
                 }
             }
             )
-            .catch((error) => { toast.error('Invalid credentials', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                transition: Bounce,
-            }); setIsLoading(false); console.error(error) });
+            .catch((error) => {
+                toast.error('Invalid credentials', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                }); setIsLoading(false); console.error(error)
+            });
     }
 
     return (

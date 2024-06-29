@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
 import { UilEye, UilEyeSlash } from "@iconscout/react-unicons";
-import { ToastContainer, toast } from "react-toastify";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { userRole } from '../../../context/context';
 
 const LoginForm = () => {
 
@@ -12,6 +14,7 @@ const LoginForm = () => {
 
     const [isHidden, setIsHidden] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
+    const user = useContext(userRole)
 
     async function loginClick(data) {
         setIsLoading(true)
@@ -32,7 +35,7 @@ const LoginForm = () => {
         };
 
         fetch("http://192.168.29.62:8000/api/signin", requestOptions)
-            .then((response) => response.text())
+            .then((response) => response.json())
             .then((result) => {
                 if (result.status === true) {
                     toast.success('Successfull Login', {
@@ -44,9 +47,12 @@ const LoginForm = () => {
                         draggable: true,
                         progress: undefined,
                         theme: "light",
-                        transition: Bounce,
+                        transition: Bounce, 
                     });
-                    navigate('/')
+                    localStorage.setItem('token', result.token);
+                    // user.setUserRole("Admin");
+                    // console.log(user.userRole);
+                    navigate('/dashboard')
                 }
             })
             .catch((error) => {toast.error('Invalid credentials', {
