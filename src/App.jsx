@@ -12,12 +12,14 @@ import Nav from './components/common/Nav';
 import Category from './pages/category';
 import SignUp from './components/core/auth/SignUp';
 import { ToastContainer } from 'react-toastify';
+import { userRole } from './context/context';
 
 function App() {
 
-  const [checkUser, setCheckUser] = useState("");
+  const [checkUser, setCheckUser] = useState("User");
 
   return (
+    <userRole.Provider value={checkUser}>
     <div>
             <ToastContainer />
       {checkUser === "User" ?
@@ -45,6 +47,7 @@ function App() {
         </Routes>
       }
     </div>
+    </userRole.Provider>
   )
 }
 
