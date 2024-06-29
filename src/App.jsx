@@ -7,6 +7,7 @@ import MainLayout from './components/common/MainLayout';
 import Category from './pages/category';
 import ViewItem from './pages/viewItem';
 import OrderData from './pages/orderData';
+import SignUp from './components/core/auth/SignUp';
 // import { ToastContainer } from 'react-toastify';
 // import { userRole } from './context/context';
 
@@ -33,6 +34,7 @@ function App() {
        
 
             <Route path="/login" element={<LoginForm />} />
+            <Route path="/sign-up" element={<SignUp />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
         

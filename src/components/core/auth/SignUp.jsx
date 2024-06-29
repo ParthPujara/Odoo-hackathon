@@ -36,7 +36,7 @@ const SignUp = () => {
             redirect: "follow"
         };
 
-        fetch("http://192.168.29.62:8000/api/signup", requestOptions)
+        fetch(`${import.meta.env.VITE_API_DOMAIN}api/signup`, requestOptions)
             .then((response) => response.json())
             .then((result) => {
                 if (result.status === true) {
@@ -53,6 +53,19 @@ const SignUp = () => {
                         transition: Bounce,
                     });
                     navigate('/dashboard')
+                }
+                else{
+                    toast.error('Invalid credentials', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    }); setIsLoading(false);
                 }
             }
             )

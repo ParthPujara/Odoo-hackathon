@@ -27,9 +27,7 @@ const OrderTable = ({userData}) => {
             <table className="min-w-full table-auto shadow-sm">
                 <thead className="bg-gray-50">
                     <tr>
-                        <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Name
-                        </th>
+                       
 
                         <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Furniture Name
@@ -51,12 +49,7 @@ const OrderTable = ({userData}) => {
                 <tbody className='bg-white divide-gray-200'>
                     {data.map((user) => (
                         <tr>
-                            {/* <td
-                                className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900 cursor-pointer"
-                            >{user.name}</td> */}
-                            <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
-                                {user.order_id}
-                            </td>
+                        
                             <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
                                 {user.furniture.name}
                             </td>

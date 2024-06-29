@@ -51,7 +51,7 @@ const ViewItem = () => {
             redirect: "follow"
         };
 
-        fetch("http://192.168.29.62:8000/api/furniture", requestOptions)
+        fetch(`${import.meta.env.VITE_API_DOMAIN}api/furniture`, requestOptions)
             .then((response) => response.json())
             .then((result) => {
                 if (result.status === true) {
@@ -84,7 +84,7 @@ const ViewItem = () => {
             redirect: "follow"
         };
 
-        fetch(`http://192.168.29.62:8000/api/furniture/get/${id}`, requestOptions)
+        fetch(`${import.meta.env.VITE_API_DOMAIN}api/furniture/get/${id}`, requestOptions)
             .then((response) => response.json())
             .then((result) => { console.log(result); if (result.status === true) { setData(result.data) } })
             .catch((error) => console.error(error));
@@ -100,7 +100,7 @@ const ViewItem = () => {
             redirect: "follow"
         };
 
-        fetch("http://192.168.29.62:8000/api/cities", requestOptions)
+        fetch(`${import.meta.env.VITE_API_DOMAIN}api/cities`, requestOptions)
             .then((response) => response.json())
             .then((result) => { setCityData(result.data); })
             .catch((error) => console.error(error));
