@@ -24,5 +24,6 @@ EasyFurnish is a furniture renting application for simplifing the process of ren
 
 
 ## Images:
+![Example Image](https://github.com/ParthPujara/Odoo-hackathon/blob/main/i1.jpg)
 
 
