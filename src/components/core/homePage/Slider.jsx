@@ -6,16 +6,8 @@ import data from '../City.json'
 import $ from 'jquery';
 
 const Slider = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [cityName, setCityName] = useState('Ahmedabad');
-    const selectCity = (cityName) => {
-        let sc = document.getElementById('search-city');
-        sc.value = cityName;
-        setCityName(cityName);
-    }
-    // useEffect(()=>{
-    //         document.getElementById('openModal').click()
-    // },[]);
+
+
     return (
         <>
 
