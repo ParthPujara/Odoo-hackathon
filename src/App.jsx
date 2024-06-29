@@ -17,7 +17,7 @@ import { userRole } from './context/context';
 
 function App() {
 
-  const [checkUser, setCheckUser] = useState("User");
+  const [checkUser, setCheckUser] = useState("");
 
   return (
     <userRole.Provider value={checkUser}>
