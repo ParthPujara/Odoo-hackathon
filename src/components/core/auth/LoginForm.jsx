@@ -12,11 +12,19 @@ const LoginForm = () => {
 
     const [isHidden, setIsHidden] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
+
     async function loginClick(data) {
-        const formData = new FormData()
-        formData.append('username', data.email)
-        formData.append('password', data.password)
         setIsLoading(true)
+
+        await fetch("http://192.168.29.62:8000/api/signup", 
+            {
+                method: "POST",
+                body: JSON.stringify(data)
+            }   
+            )
+        .then((response) => response.json())
+        .then((result) => console.log(result))
+        .catch((error) => console.error(error));
 
     }
     return (
@@ -25,7 +33,7 @@ const LoginForm = () => {
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
                 <h1 className="text-2xl font-bold text-left mb-4">Welcome!</h1>
                 <p className="text-left mb-8">Please sign into your account</p>
-                <form>
+                <form onSubmit={handleSubmit(loginClick)}>
                     <div className="mb-5">
                         <label
                             htmlFor="email"
@@ -64,22 +72,8 @@ const LoginForm = () => {
                             }
                         </div>
                     </div>
-                    <div className="mb-6 mx-2 flex justify-between items-center">
-                        <div className="flex items-center">
-                            <input
-                                id="remember-me"
-                                name="remember-me"
-                                {...register('remember')}
-                                type="checkbox"
-                                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                            />
-                            <label
-                                htmlFor="remember-me"
-                                className="ml-2 block text-sm text-gray-900"
-                            >
-                                Remember me
-                            </label>
-                        </div>
+                    <div className="mb-6 mx-2 flex justify-end items-center">
+                        
                         <Link
                             to="/forgot-password"
                             className="font-medium text-indigo-600 hover:text-indigo-500"
@@ -92,8 +86,7 @@ const LoginForm = () => {
                             type="submit"
                             disabled={isLoading}
                             className={`relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md ${isLoading ? 'bg-gray-400 text-gray-800' : 'text-white bg-blue-950 hover:bg-blue-800'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-                            onClick={() => { navigate("/dashboard"); handleSubmit(loginClick) }}
-                        >
+                            >
                             Sign in
                         </button>
                     </div>

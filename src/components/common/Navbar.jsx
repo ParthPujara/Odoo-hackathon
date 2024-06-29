@@ -64,6 +64,13 @@ const NavBar = ({ setShowToggle, openNav, setOpenNav }) => {
         Dashboard
       </NavLink>
       <NavLink
+        to="add-category"
+        className={checkActive}
+        onClick={() => { if (width <= 900) { setOpenNav(false); setShowToggle(true) } }}
+      >
+       Add Category
+      </NavLink>
+      <NavLink
         to="manage-subscription"
         className={checkActive}
         onClick={() => { if (width <= 900) { setOpenNav(false); setShowToggle(true) } }}

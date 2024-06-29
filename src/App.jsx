@@ -9,10 +9,11 @@ import Dashboard from './pages/dashboard';
 import ManageSubscription from './pages/manageSubscription';
 import Homepage from './pages/homepage';
 import Nav from './components/common/Nav';
+import Category from './pages/category';
 
 function App() {
 
-  const [checkUser, setCheckUser] = useState("User");
+  const [checkUser, setCheckUser] = useState("");
 
   return (
     <div>
@@ -34,6 +35,7 @@ function App() {
           <Route element={<MainLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/manage-subscription" element={<ManageSubscription />} />
+            <Route path="/add-category" element={<Category />} />
           </Route>
 
         </Routes>
