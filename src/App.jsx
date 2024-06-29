@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { Navigate, Route, Routes } from "react-router-dom";
 import LoginForm from './components/core/auth/LoginForm';
-import ForgotPassword from './components/core/auth/ForgotPassword';
+import ForgotPassword from './components/core/auth/SignUp';
 import ResetPassword from './components/core/auth/ResetPassword';
 import MainLayout from './components/common/MainLayout';
 import Dashboard from './pages/dashboard';
@@ -10,6 +10,7 @@ import ManageSubscription from './pages/manageSubscription';
 import Homepage from './pages/homepage';
 import Nav from './components/common/Nav';
 import Category from './pages/category';
+import SignUp from './components/core/auth/SignUp';
 
 function App() {
 
@@ -23,7 +24,8 @@ function App() {
           <Routes>
 
             <Route path="/" element={<Homepage />} />
-
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/sign-up" element={<SignUp />} />
           </Routes >
         </>
         :

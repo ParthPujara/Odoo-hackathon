@@ -5,13 +5,13 @@ import { UilBars } from "@iconscout/react-unicons"
 
 const routeMapping = {
   "dashboard": "Dashboard",
- "manage-subscription": "Manage Subscription"
+  "manage-subscription": "Manage Subscription"
 };
 
 function AppBar({ showToggle, setShowToggle, setOpenNav, openNav }) {
   const { pathname } = useLocation();
   console.log(pathname)
-//   const { routeName } = useSelector((state) => state.route);
+  //   const { routeName } = useSelector((state) => state.route);
   const [routeString, setRouteString] = useState('');
 
   useEffect(() => {

@@ -1,143 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import LoginSignupImage from "C:/Users/Nihal/Desktop/faq (1).png";
-// import OTPInput from "otp-input-react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import $ from "jquery";
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 const Nav = () => {
-
-    // const options = {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //         Accept: "application/json",
-    //         "X-Requested-With": "XMLHttpRequest",
-    //         'X-XSRF-TOKEN': decodeURIComponent(getCookie()),
-    //     },
-    //     credentials: "include",
-    //     body: JSON.stringify({ mno: phoneNumber }),
-    // };
-    // const fetchData = () => {
-    //     fetch("https://take2cash-admin.sumayinfotech.com/api/attempt-login", options)
-    //         .then((response) => {
-    //             return response.json();
-    //         })
-    //         .then((fetchedData) => {
-    //             setData(fetchedData);
-    //             if (fetchedData.status) {
-    //                 setStorePhoneNumber(phoneNumber);
-    //                 localStorage.setItem('phoneNumber', phoneNumber)
-    //                 if (fetchedData.is_reg) {
-    //                     setDisplay("otp");
-    //                     setBtnLoading(false);
-    //                 } else {
-    //                     setDisplay("login");
-    //                     setBtnLoading(false);
-    //                 }
-    //             }
-    //         })
-    //         .catch((error) => console.log(error));
-    // };
-    // const fetchRegisterData = () => {
-    //     if (document.getElementById("loginsignup-email").value && nameValue) {
-    //         fetch("https://take2cash-admin.sumayinfotech.com/api/register",
-    //             {
-    //                 method: "POST",
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                     Accept: "application/json",
-    //                     "X-Requested-With": "XMLHttpRequest",
-    //                     'X-XSRF-TOKEN': decodeURIComponent(getCookie()),
-    //                 },
-    //                 credentials: "include",
-    //                 body: JSON.stringify({ name: nameValue, email: document.getElementById("loginsignup-email").value, mno: storePhoneNumber }),
-    //             })
-    //             .then((response) => {
-    //                 return response.json();
-    //             })
-    //             .then((fetchedData) => {
-    //                 if (fetchedData.status) {
-    //                     setBtnLoading(false);
-    //                     setDisplay("otp");
-    //                 }
-    //             })
-    //             .catch((error) => console.log(error));
-    //     }
-    // };
-
-
-    // const fetchOTPData = () => {
-    //     fetch("https://take2cash-admin.sumayinfotech.com/api/auth",
-    //         {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 Accept: "application/json",
-    //                 "X-Requested-With": "XMLHttpRequest",
-    //                 'X-XSRF-TOKEN': decodeURIComponent(getCookie()),
-    //             },
-    //             credentials: "include",
-    //             body: JSON.stringify({ otp: OTP }),
-    //         })
-    //         .then((response) => {
-    //             return response.json();
-    //         })
-    //         .then((fetchedData) => {
-    //             setOTPData(fetchedData);
-    //             if (!fetchedData.is_valid) {
-    //                 setBtnLoading(true);
-    //                 setDisableOTP(false);
-    //                 setBtnLoading(false);
-    //             }
-    //             else if (fetchedData.is_limit) {
-    //                 setBtnLoading(true);
-    //                 setDisableOTP(true);
-    //                 setBtnLoading(false);
-    //             }
-    //             else if (fetchedData.is_valid) {
-    //                 document.getElementById('loginSignupModal-close').click();
-    //                 setToastBackground('#1fbc32');
-    //                 setToastMessage(fetchedData.message); setToast('show');
-    //                 localStorage.setItem('isLoggedIn', true);
-    //                 setBtnLoading(false);
-    //                 localStorage.setItem('userName', fetchedData.user.name);
-    //                 localStorage.setItem('userEmail', fetchedData.user.email);
-    //             }
-    //         })
-    //         .catch((error) => console.log(error));
-    // };
-    // const resendOTPData = () => {
-    //     fetch("https://take2cash-admin.sumayinfotech.com/api/attempt-login", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             Accept: "application/json",
-    //             "X-Requested-With": "XMLHttpRequest",
-    //             'X-XSRF-TOKEN': decodeURIComponent(getCookie()),
-    //         },
-    //         credentials: "include",
-    //         body: JSON.stringify({ mno: phoneNumber }),
-    //     })
-    //         .then((response) => { return response.json(); })
-    //         .then((fetchedData) => { console.log(fetchedData); })
-    //         .catch((error) => console.log(error))
-    // }
-    // const logout = () => {
-    //     fetch("https://take2cash-admin.sumayinfotech.com/api/logout", {
-    //         method: 'GET',
-    //         credentials: "include",
-    //     })
-    //         .then((response) => { return response.json(); })
-    //         .then((fetchedData) => { setToastMessage(fetchedData.message); setToast('show'); setToastBackground('#ff432d'); localStorage.setItem('isLoggedIn', "false"); })
-    //         .catch((error) => console.log(error))
-    // }
-    // useEffect(() => {
-    //     fetch("https://take2cash-admin.sumayinfotech.com/sanctum/csrf-cookie", {
-    //         credentials: "include",
-    //     });
-    // }, []);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [data, setData] = useState([]);
     const [OTPData, setOTPData] = useState([]);
@@ -159,10 +25,207 @@ const Nav = () => {
     const [toast, setToast] = useState('');
     const [toastBackground, setToastBackground] = useState('#fff');
     const [btnLoading, setBtnLoading] = useState(false);
+
     function closeNav() {
         var cb = document.getElementById("click");
         cb.checked = false;
     }
+    const getTimeRemaining = (e) => {
+        const total = Date.parse(e) - Date.parse(new Date());
+        const seconds = Math.floor((total / 1000) % 60);
+        const minutes = Math.floor((total / 1000 / 60) % 60);
+        return {
+            total,
+            minutes,
+            seconds,
+        };
+    };
+    const startTimer = (e) => {
+        let { total, minutes, seconds } = getTimeRemaining(e);
+        if (total >= 0) {
+            setTimer(
+                (minutes > 9 ? minutes : "0" + minutes) +
+                ":" +
+                (seconds > 9 ? seconds : "0" + seconds)
+            );
+        }
+    };
+
+    const clearTimer = (e) => {
+        setTimer("02:00");
+        if (Ref.current) clearInterval(Ref.current);
+        const id = setInterval(() => {
+            startTimer(e);
+        }, 1000);
+        Ref.current = id;
+    };
+    const getDeadTime = () => {
+        let deadline = new Date();
+        deadline.setMinutes(deadline.getMinutes() + 1, deadline.getSeconds() + 60);
+        return deadline;
+    };
+    useEffect(() => {
+        clearTimer(getDeadTime());
+        setCounter(0);
+    }, [display]);
+    const onClickReset = () => {
+        clearTimer(getDeadTime());
+        setCounter(30);
+    };
+    useEffect(() => {
+        const timer =
+            counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+        return () => {
+            clearInterval(timer);
+        };
+    }, [counter]);
+    const clearEmail = () => {
+        document.getElementById("loginsignup-email").value = "";
+    };
+    function getCookie() {
+        let name = "XSRF-TOKEN=";
+        let ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "X-Requested-With": "XMLHttpRequest",
+            'X-XSRF-TOKEN': decodeURIComponent(getCookie()),
+        },
+        credentials: "include",
+        body: JSON.stringify({ mno: phoneNumber }),
+    };
+    const fetchData = () => {
+        fetch("https://take2cash-admin.sumayinfotech.com/api/attempt-login", options)
+            .then((response) => {
+                return response.json();
+            })
+            .then((fetchedData) => {
+                setData(fetchedData);
+                if (fetchedData.status) {
+                    setStorePhoneNumber(phoneNumber);
+                    localStorage.setItem('phoneNumber', phoneNumber)
+                    if (fetchedData.is_reg) {
+                        setDisplay("otp");
+                        setBtnLoading(false);
+                    } else {
+                        setDisplay("login");
+                        setBtnLoading(false);
+                    }
+                }
+            })
+            .catch((error) => console.log(error));
+    };
+    const fetchRegisterData = () => {
+        if (document.getElementById("loginsignup-email").value && nameValue) {
+            fetch("https://take2cash-admin.sumayinfotech.com/api/register",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                        "X-Requested-With": "XMLHttpRequest",
+                        'X-XSRF-TOKEN': decodeURIComponent(getCookie()),
+                    },
+                    credentials: "include",
+                    body: JSON.stringify({ name: nameValue, email: document.getElementById("loginsignup-email").value, mno: storePhoneNumber }),
+                })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((fetchedData) => {
+                    if (fetchedData.status) {
+                        setBtnLoading(false);
+                        setDisplay("otp");
+                    }
+                })
+                .catch((error) => console.log(error));
+        }
+    };
+
+
+    const fetchOTPData = () => {
+        fetch("https://take2cash-admin.sumayinfotech.com/api/auth",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    "X-Requested-With": "XMLHttpRequest",
+                    'X-XSRF-TOKEN': decodeURIComponent(getCookie()),
+                },
+                credentials: "include",
+                body: JSON.stringify({ otp: OTP }),
+            })
+            .then((response) => {
+                return response.json();
+            })
+            .then((fetchedData) => {
+                setOTPData(fetchedData);
+                if (!fetchedData.is_valid) {
+                    setBtnLoading(true);
+                    setDisableOTP(false);
+                    setBtnLoading(false);
+                }
+                else if (fetchedData.is_limit) {
+                    setBtnLoading(true);
+                    setDisableOTP(true);
+                    setBtnLoading(false);
+                }
+                else if (fetchedData.is_valid) {
+                    document.getElementById('loginSignupModal-close').click();
+                    setToastBackground('#1fbc32');
+                    setToastMessage(fetchedData.message); setToast('show');
+                    localStorage.setItem('isLoggedIn', true);
+                    setBtnLoading(false);
+                    localStorage.setItem('userName', fetchedData.user.name);
+                    localStorage.setItem('userEmail', fetchedData.user.email);
+                }
+            })
+            .catch((error) => console.log(error));
+    };
+    const resendOTPData = () => {
+        fetch("https://take2cash-admin.sumayinfotech.com/api/attempt-login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "X-Requested-With": "XMLHttpRequest",
+                'X-XSRF-TOKEN': decodeURIComponent(getCookie()),
+            },
+            credentials: "include",
+            body: JSON.stringify({ mno: phoneNumber }),
+        })
+            .then((response) => { return response.json(); })
+            .then((fetchedData) => { console.log(fetchedData); })
+            .catch((error) => console.log(error))
+    }
+    const logout = () => {
+        fetch("https://take2cash-admin.sumayinfotech.com/api/logout", {
+            method: 'GET',
+            credentials: "include",
+        })
+            .then((response) => { return response.json(); })
+            .then((fetchedData) => { setToastMessage(fetchedData.message); setToast('show'); setToastBackground('#ff432d'); localStorage.setItem('isLoggedIn', "false"); })
+            .catch((error) => console.log(error))
+    }
+    useEffect(() => {
+        fetch("https://take2cash-admin.sumayinfotech.com/sanctum/csrf-cookie", {
+            credentials: "include",
+        });
+    }, []);
     return (
         <>
             <div className="heading fixed-top">
@@ -226,13 +289,18 @@ const Nav = () => {
                             </li>
                         </ul>
                     </div>
-                    {(localStorage.getItem('isLoggedIn') !== 'true') && <NavLink
+                    {(localStorage.getItem('isLoggedIn') !== 'true') && <div
                         className="btn login-btn me-2 hide-mobile"
-                        to="/login"
+                        onClick={() => {
+                            setDisplay("number");
+                            setPhoneNumber("");
+                            clearEmail();
+                        }}
                         id="nav-login-btn"
+                        data-bs-toggle="modal" data-bs-target="#loginSignupModal"
                     >
                         Login
-                    </NavLink>}
+                    </div>}
                     {(localStorage.getItem('isLoggedIn') === 'true') && <div className="dropdown user-btn hide-mobile">
                         <button className="btn-profile" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i className="bi bi-person-circle"></i>
