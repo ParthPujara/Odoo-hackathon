@@ -1,3 +1,5 @@
+// It Adds, Displays Category such as name, image, actions etc.
+
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
