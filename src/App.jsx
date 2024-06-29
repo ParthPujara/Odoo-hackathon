@@ -8,23 +8,36 @@ import MainLayout from './components/common/MainLayout';
 import Dashboard from './pages/dashboard';
 import ManageSubscription from './pages/manageSubscription';
 import Homepage from './pages/homepage';
+import Nav from './components/common/Nav';
 
 function App() {
 
+  const [checkUser, setCheckUser] = useState("User");
+
   return (
     <div>
-      <Routes>
+      {checkUser === "User" ?
+        <>
+          <Nav />
+          <Routes>
 
-        <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Homepage />} />
 
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route element={<MainLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/manage-subscription" element={<ManageSubscription />} />
-        </Route>
-      </Routes >
+          </Routes >
+        </>
+        :
+        <Routes>
+          {/* <Route path="/" element={<Navigate to=/>} /> */}
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route element={<MainLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/manage-subscription" element={<ManageSubscription />} />
+          </Route>
+
+        </Routes>
+      }
     </div>
   )
 }
