@@ -52,7 +52,7 @@ const SignUp = () => {
                         theme: "light",
                         transition: Bounce,
                     });
-                    navigate('/dashboard')
+                    navigate('/add-category')
                 }
                 else{
                     toast.error('Invalid credentials', {
