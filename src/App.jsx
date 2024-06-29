@@ -11,6 +11,7 @@ import Homepage from './pages/homepage';
 import Nav from './components/common/Nav';
 import Category from './pages/category';
 import SignUp from './components/core/auth/SignUp';
+import ViewItem from './pages/viewItem';
 function App() {
 
   const [checkUser, setCheckUser] = useState("");
@@ -38,6 +39,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/manage-subscription" element={<ManageSubscription />} />
             <Route path="/add-category" element={<Category />} />
+            <Route path="/view-item/:id" element={<ViewItem />} />
           </Route>
 
         </Routes>
