@@ -12,17 +12,16 @@ import Nav from './components/common/Nav';
 import Category from './pages/category';
 import SignUp from './components/core/auth/SignUp';
 import ViewItem from './pages/viewItem';
-import { ToastContainer } from 'react-toastify';
-import { userRole } from './context/context';
+// import { ToastContainer } from 'react-toastify';
+// import { userRole } from './context/context';
 
 function App() {
 
-  const [checkUser, setCheckUser] = useState("User");
+  const [checkUser, setCheckUser] = useState("");
 
   return (
-    <userRole.Provider value={checkUser}>
     <div>
-         
+
       {checkUser === "User" ?
         <>
           <Nav />
@@ -49,7 +48,6 @@ function App() {
         </Routes>
       }
     </div>
-    </userRole.Provider>
   )
 }
 

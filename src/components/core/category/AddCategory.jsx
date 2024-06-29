@@ -22,7 +22,7 @@ const AddCategory = ({ categoryData }) => {
         else {
             const myHeaders = new Headers();
             myHeaders.append("Accept", "application/json");
-            myHeaders.append("Authorization", "Bearer 5|bi3J5hBzYVg9K8Xk119P4VgP7elcwFlI9sLoVNMu7c708788");
+            myHeaders.append("Authorization", `Bearer ${import.meta.env.VITE_TOKEN}`);
 
             const formdata = new FormData();
             formdata.append("name", data.name);
@@ -34,7 +34,7 @@ const AddCategory = ({ categoryData }) => {
                 redirect: "follow"
             };
 
-            fetch("http://192.168.29.62:8000/api/category", requestOptions)
+            fetch(`${import.meta.env.VITE_API_DOMAIN}`, requestOptions)
                 .then((response) => response.json())
                 .then((result) => {
                     console.log(result.status)
@@ -72,7 +72,7 @@ const AddCategory = ({ categoryData }) => {
     const getCategory = () => {
         const myHeaders = new Headers();
         myHeaders.append("Accept", "application/json");
-        myHeaders.append("Authorization", "Bearer 5|bi3J5hBzYVg9K8Xk119P4VgP7elcwFlI9sLoVNMu7c708788");
+        myHeaders.append("Authorization", `Bearer ${import.meta.env.VITE_TOKEN}`);
 
         const requestOptions = {
             method: "GET",
@@ -80,7 +80,7 @@ const AddCategory = ({ categoryData }) => {
             redirect: "follow"
         };
 
-        fetch("http://192.168.29.62:8000/api/category", requestOptions)
+        fetch(`${import.meta.env.VITE_API_DOMAIN}api/category`, requestOptions)
             .then((response) => response.json())
             .then((result) => { console.log(result); if (result.status === true) { setData(result.data) } })
             .catch((error) => console.error(error));
@@ -88,7 +88,7 @@ const AddCategory = ({ categoryData }) => {
     const deleteCategory = (id) => {
         const myHeaders = new Headers();
         myHeaders.append("Accept", "application/json");
-        myHeaders.append("Authorization", "Bearer 5|bi3J5hBzYVg9K8Xk119P4VgP7elcwFlI9sLoVNMu7c708788");
+        myHeaders.append("Authorization", `Bearer ${import.meta.env.VITE_TOKEN}`);
 
         const requestOptions = {
             method: "DELETE",
@@ -96,7 +96,7 @@ const AddCategory = ({ categoryData }) => {
             redirect: "follow"
         };
 
-        fetch(`http://192.168.29.62:8000/api/category/${id}`, requestOptions)
+        fetch(`${import.meta.env.VITE_API_DOMAIN}api/category/${id}`, requestOptions)
             .then((response) => response.json())
             .then((result) => {
                 if (result.status === true) {
@@ -118,7 +118,7 @@ const AddCategory = ({ categoryData }) => {
     const updateCategory = (id) => {
         const myHeaders = new Headers();
         myHeaders.append("Accept", "application/json");
-        myHeaders.append("Authorization", "Bearer 5|bi3J5hBzYVg9K8Xk119P4VgP7elcwFlI9sLoVNMu7c708788");
+        myHeaders.append("Authorization", `Bearer ${import.meta.env.VITE_TOKEN}`);
 
 
         const formdata = new FormData();
@@ -132,7 +132,7 @@ const AddCategory = ({ categoryData }) => {
             redirect: "follow"
         };
 
-        fetch(`http://192.168.29.62:8000/api/category/${id}`, requestOptions)
+        fetch(`${import.meta.env.VITE_API_DOMAIN}api/category/${id}`, requestOptions)
             .then((response) => response.json())
             .then((result) => {
                 if (result.status === true) {
