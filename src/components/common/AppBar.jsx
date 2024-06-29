@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-// import profile from "../../assets/profile.png";
+import profile from "../../assets/profile.png";
 import { useEffect, useState } from "react";
 import { UilBars } from "@iconscout/react-unicons"
 
@@ -40,7 +40,7 @@ function AppBar({ showToggle, setShowToggle, setOpenNav, openNav }) {
           </div> */}
           <img
             className="h-10 w-10 rounded-full cursor-pointer bg-blue-200"
-            // src={profile}
+            src={profile}
             alt="Profile Avatar"
           />
         </div>

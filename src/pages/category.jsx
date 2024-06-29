@@ -1,21 +1,16 @@
 import React from 'react'
 import AddCategory from '../components/core/category/AddCategory'
+import { useNavigate } from 'react-router-dom'
 
 const Category = () => {
-    const temp = [
-        {
-            name: "A",
-            email: "abc@gmail.com"
-        },
-        {
-            name: "P",
-            email: "pqr@gmail.com"
-        },
-
-    ]
+    const navigate = useNavigate()
+    if(localStorage.getItem("token")===null){
+        navigate('/login')
+        return;
+    }
   return (
     <div className='px-2'>
-    <AddCategory categoryData={temp}/>
+    <AddCategory/>
     </div>
   )
 }
