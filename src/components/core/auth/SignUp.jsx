@@ -1,15 +1,21 @@
 import React from 'react'
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
 import { UilEye, UilEyeSlash } from "@iconscout/react-unicons";
+import { Bounce } from 'react-toastify';
 
 const SignUp = () => {
 
+    const navigate = useNavigate();
+
     const [isHidden, setIsHidden] = useState(true)
     const { register, handleSubmit } = useForm()
+    const [isLoading, setIsLoading] = useState(false)
 
     const RegiseterClick = (data) => {
+        setIsLoading(true)
+
         const myHeaders = new Headers();
         myHeaders.append("Accept", "application/json");
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -29,8 +35,35 @@ const SignUp = () => {
 
         fetch("http://192.168.29.62:8000/api/signup", requestOptions)
             .then((response) => response.text())
-            .then((result) => console.log(result))
-            .catch((error) => console.error(error));
+            .then((result) => {
+                if (result.status === true) {
+                    localStorage.setItem('token', result.token);
+                    toast.success('Signed In successfully', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+                    navigate('/dashboard')
+                }
+            }
+            )
+            .catch((error) => { toast.error('Invalid credentials', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            }); setIsLoading(false); console.error(error) });
     }
 
     return (
@@ -114,17 +147,19 @@ const SignUp = () => {
                         <div>
                             <button
                                 type="submit"
+                                disabled={isLoading}
                                 className="relative w-full flex justify-center mt-4 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             >
                                 Sign in
                             </button>
                         </div>
-                        <div className="text-center mt-2">
-                            <button
+                        <div className="my-6 mx-2 flex justify-center items-center">
+                            <Link
+                                to="/login"
                                 className="font-medium text-indigo-600 hover:text-indigo-500"
                             >
-                                Back to login
-                            </button>
+                                <div className="text-sm">Back to Login</div>{" "}
+                            </Link>
                         </div>
                     </div>
                 </form>
